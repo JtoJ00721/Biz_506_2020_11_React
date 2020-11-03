@@ -22,11 +22,11 @@ const PhoneMain = () => {
   ]);
 
   // onClikcSave라는 함수는 main에서 선언하고
-  const onClickSave = () => {
-    window.alert("저장 버튼이 아파함 ><");
+  const onClickSave = (name, number) => {
+    //window.alert("저장 버튼이 아파함 ><");
     setPhoneBook([
       ...phoneBook,
-      { id: phoneId.current++, name: "팀", number: "000-000" },
+      { id: phoneId.current++, name: name, number: number },
     ]);
   };
 

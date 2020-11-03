@@ -15,12 +15,14 @@ const PhoneList = ({ phoneBook }) => {
 
   return (
     <table>
-      <tr>
-        <th>ID</th>
-        <th>이름</th>
-        <th>전화번호</th>
-      </tr>
-      {PhoneItems}
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>이름</th>
+          <th>전화번호</th>
+        </tr>
+      </thead>
+      <tbody>{PhoneItems}</tbody>
     </table>
   );
 };
