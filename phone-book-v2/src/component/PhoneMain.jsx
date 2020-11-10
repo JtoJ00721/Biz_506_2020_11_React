@@ -17,7 +17,7 @@ function PhoneMain(props) {
     useRef형(초기값) 초기값으로 생성이 된다 ref형 변수는 current속성을 자유롭게 변화시킬수 있고
     값이 변화가 되어도 화면이 rendering 도지 않는다.
   */
-  const nextid = useRef(phoneBooks.length);
+  const nextid = useRef(phoneBooks.length && 0);
   /*
     표준 js에서 배열요소를 추가할때 push() 라는 함수를 사용한다.
     react에서는 기존의 배열요소에 어떤값을 추가하는 것이 금지되어 있다.
@@ -87,6 +87,19 @@ function PhoneMain(props) {
     setPhoneBooks(editBooks);
   };
 
+  const updateBooks = (id, name, number) => {
+    const updatePhoneBooks = phoneBooks.map((phone) => {
+      if (phone.id === Number(id)) {
+        // 선택된 id와 같은 전화번호는 이름, 변호, 등을 update
+        return { ...phone, name: name, number: number, isEdit: false };
+      } else {
+        // 선택된 id와 다른 번호는 isEdit만 false로 바꾸어서 input 박스가 사라지도록
+        return { ...phone, isEdit: false };
+      }
+    });
+    setPhoneBooks(updatePhoneBooks);
+  };
+
   return (
     <div className="phoneMain">
       <h3>나만의 전화번호부</h3>
@@ -94,6 +107,7 @@ function PhoneMain(props) {
         phoneBooks={phoneBooks}
         deletePhoneBooks={deletePhoneBooks}
         editableBooks={editableBooks}
+        updateBooks={updateBooks}
       />
       <PhoneInsert insertPhoneBook={insertPhoneBook} />
     </div>
