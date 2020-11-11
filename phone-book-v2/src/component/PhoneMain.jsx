@@ -44,7 +44,6 @@ function PhoneMain(props) {
   useEffect(() => {
     const localStorageBooks = window.localStorage.getItem("phoneBooks");
     setPhoneBooks(JSON.parse(localStorageBooks));
-
     nextid.current = phoneBooks.length;
   }, []);
 
