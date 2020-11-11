@@ -1,5 +1,6 @@
 div.form {
   display: flex;
+  padding: 12px;
 }
 
 div.form input {
@@ -18,4 +19,9 @@ div.todo-insert {
   color: whitesmoke;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.5s;
+}
+
+div.todo-insert:hover {
+  background-color: coral;
 }
