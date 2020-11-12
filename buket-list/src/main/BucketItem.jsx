@@ -5,8 +5,13 @@ class BucketItem extends Component {
   b_flag_text = ["일반", "중요", "매우중요", "긴급"];
   cursorStyle = { cursor: "pointer" };
 
+  state = {
+    title: "",
+    isEdit: false,
+  };
+
   render() {
-    const { bucket, handleFlagClick } = this.props;
+    const { bucket, handleFlagClick, updateBucket } = this.props;
 
     /**
      * 이벤트 핸들러 등록 주의!!
@@ -24,7 +29,7 @@ class BucketItem extends Component {
         <td
           style={this.cursorStyle}
           onClick={() => {
-            handleFlagClick;
+            handleFlagClick(bucket.b_id);
           }}
         >
           {this.b_flag_text[bucket.b_flag % 4]}
@@ -32,9 +37,33 @@ class BucketItem extends Component {
         <td>
           <Moment format="YYYY-MM-DD HH:MM:SS">{bucket.b_start_date}</Moment>
         </td>
-        <td style={{ cursor: "pointer", color: "cornflowerblue" }}>
-          {bucket.b_title}
-        </td>
+
+        {this.state.isEdit ? (
+          <td>
+            <input
+              value={this.state.title}
+              onChange={(e) => {
+                this.setState({ title: e.target.value });
+              }}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  updateBucket(bucket.b_id, this.state.title);
+                  this.setState({ isEdit: false });
+                }
+              }}
+            />
+          </td>
+        ) : (
+          <td
+            onClick={(e) => {
+              this.setState({ isEdit: true });
+              this.setState({ title: bucket.b_title });
+            }}
+            style={{ cursor: "pointer", color: "cornflowerblue" }}
+          >
+            {bucket.b_title}
+          </td>
+        )}
 
         <td>
           {bucket.b_end_check ? (
@@ -44,7 +73,14 @@ class BucketItem extends Component {
           )}
         </td>
         <td>
-          <input type="checkbox" value={bucket.b_cancel} />
+          <input
+            type="checkbox"
+            defaultChecked={bucket.b_cancel}
+            value={bucket.b_cancel}
+            onChange={(e) => {
+              this.props.handleCancel(bucket.b_id);
+            }}
+          />
         </td>
       </tr>
     );

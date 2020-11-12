@@ -21,7 +21,7 @@ class BucketMain extends Component {
         b_title: "리액트 정복",
         b_end_date: "",
         b_end_check: false,
-        b_cancel: false,
+        b_cancel: true,
       },
       {
         b_id: 1,
@@ -103,7 +103,7 @@ class BucketMain extends Component {
   handleFlagClick = (id) => {
     const flagBucketList = this.state.bucketList.map((bucket) => {
       if (bucket.b_id === Number(id)) {
-        const flag = bucket.b_id + 1;
+        const flag = bucket.b_flag + 1;
         return {
           ...bucket,
           b_flag: flag,
@@ -113,6 +113,20 @@ class BucketMain extends Component {
       }
     });
     this.setState({ bucketList: flagBucketList });
+  };
+
+  updateBucket = (id, title) => {
+    const updateBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        return {
+          ...bucket,
+          b_title: title,
+        };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: updateBucketList });
   };
 
   /**
@@ -129,6 +143,7 @@ class BucketMain extends Component {
         <BucketList
           bucketList={this.state.bucketList}
           handleFlagClick={this.handleFlagClick}
+          updateBucket={this.updateBucket}
         />
       </div>
     );
