@@ -10,7 +10,12 @@ class BucketList extends Component {
 
   render() {
     // parent Component에서 보낸 변수를 받아서 분해한 후 사용할 준비하기
-    const { bucketList, handleFlagClick, updateBucket } = this.props;
+    const {
+      bucketList,
+      handleFlagClick,
+      updateBucket,
+      handleCancel,
+    } = this.props;
 
     const bItemList = bucketList.map((bucket) => {
       return (
@@ -18,6 +23,8 @@ class BucketList extends Component {
           bucket={bucket}
           handleFlagClick={handleFlagClick}
           updateBucket={updateBucket}
+          handleCancel={this.props.handleCancel}
+          handleComplet={this.props.handleComplet}
         />
       );
     });

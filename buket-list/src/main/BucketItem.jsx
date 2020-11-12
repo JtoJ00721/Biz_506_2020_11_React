@@ -11,7 +11,7 @@ class BucketItem extends Component {
   };
 
   render() {
-    const { bucket, handleFlagClick, updateBucket } = this.props;
+    const { bucket, handleFlagClick, updateBucket, handleCancel } = this.props;
 
     /**
      * 이벤트 핸들러 등록 주의!!
@@ -56,16 +56,45 @@ class BucketItem extends Component {
         ) : (
           <td
             onClick={(e) => {
+              if (bucket.b_cancel) {
+                alert("폭★8한 버킷은 수정할수 없지롱 ><");
+                return false;
+              }
               this.setState({ isEdit: true });
               this.setState({ title: bucket.b_title });
             }}
-            style={{ cursor: "pointer", color: "cornflowerblue" }}
+            style={
+              bucket.b_cancel
+                ? {
+                    cursor: "not-allowed",
+                    color: "crimson",
+                    textDecoration: "line-through",
+                  }
+                : { cursor: "pointer", color: "cornflowerblue" }
+            }
           >
             {bucket.b_title}
           </td>
         )}
 
-        <td>
+        <td
+          style={{ cursor: "pointer" }}
+          onClick={(e) => {
+            if (window.confirm("버킷을 완성하셨나요?")) {
+              let rnd = Math.random();
+              let alertrnd = Math.floor(rnd * 3 + 1);
+
+              if (alertrnd == 1) {
+                alert("오홍홍 조와여");
+              } else if (alertrnd == 2) {
+                alert("읭?");
+              } else {
+                alert("호옹이!!");
+              }
+              this.props.handleComplet(bucket.b_id);
+            }
+          }}
+        >
           {bucket.b_end_check ? (
             <Moment format="YYYY-MM-DD HH:mm:ss">{bucket.b_end_date}</Moment>
           ) : (
@@ -75,8 +104,8 @@ class BucketItem extends Component {
         <td>
           <input
             type="checkbox"
-            defaultChecked={bucket.b_cancel}
-            value={bucket.b_cancel}
+            checked={bucket.b_cancel}
+            // value={bucket.b_cancel}
             onChange={(e) => {
               this.props.handleCancel(bucket.b_id);
             }}

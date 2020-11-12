@@ -129,6 +129,33 @@ class BucketMain extends Component {
     this.setState({ bucketList: updateBucketList });
   };
 
+  handleCancel = (id) => {
+    const cancelBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        return { ...bucket, b_cancel: !bucket.b_cancel };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: cancelBucketList });
+  };
+
+  handleComplet = (id) => {
+    const date = Date();
+    const compBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        return {
+          ...bucket,
+          b_end_date: date.toString(),
+          b_end_check: !bucket.b_end_check,
+        };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: compBucketList });
+  };
+
   /**
    * class Component에서 child Component에 state형 변수를 보낼때는
    * 보낼변수명={this.state.변수}
@@ -144,6 +171,8 @@ class BucketMain extends Component {
           bucketList={this.state.bucketList}
           handleFlagClick={this.handleFlagClick}
           updateBucket={this.updateBucket}
+          handleCancel={this.handleCancel}
+          handleComplet={this.handleComplet}
         />
       </div>
     );
