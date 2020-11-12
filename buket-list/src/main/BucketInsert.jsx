@@ -20,9 +20,22 @@ class BucketInsert extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  /**
+   * 키보드로 문자열을 입력하는 도중 Enter키를 누르면
+   */
   handleKeyPress = (e) => {
-    if (eval.key === "Enter") {
-      alert(this.state.bucket_title);
+    console.log(e.key);
+    if (e.key === "Enter") {
+      // alert(this.state.bucket_title);
+
+      // props, state를 분해하지 않고 직접 핸들링
+      // this.props.bucketInsert(this.state.bucket_title);
+
+      // const { bucketInsert } = this.props;
+      // bucketInsert(this.state.bucket_title);
+      const { bucketInsert } = this.props;
+      const { bucket_title } = this.state;
+      bucketInsert(bucket_title);
     }
   };
 

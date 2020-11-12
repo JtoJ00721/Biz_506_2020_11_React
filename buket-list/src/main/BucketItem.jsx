@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 
 class BucketItem extends Component {
   render() {
@@ -7,11 +8,20 @@ class BucketItem extends Component {
     return (
       <tr>
         <td>{bucket.b_flag}</td>
-        <td>{bucket.b_start_date}</td>
-        <td>{bucket.b_title}</td>
-        <td>{bucket.b_end_check && bucket.b_end_date}</td>
         <td>
-          <input type="checkbox" />
+          <Moment format="YYYY-MM-DD HH:MM:SS">{bucket.b_start_date}</Moment>
+        </td>
+        <td>{bucket.b_title}</td>
+
+        <td>
+          {bucket.b_end_check ? (
+            <Moment format="YYYY-MM-DD HH:mm:ss">{bucket.b_end_date}</Moment>
+          ) : (
+            "ⓞ"
+          )}
+        </td>
+        <td>
+          <input type="checkbox" value={bucket.b_cancel} />
         </td>
       </tr>
     );
