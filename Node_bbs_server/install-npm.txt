@@ -1,0 +1,11 @@
+yarn add moment
+yarn add mysql4
+yarn add sequelize
+yarn add syntax-error
+yarn add express-session
+
+yarn add express
+yarn add ejs
+yarn add http-errors
+
+npm install
