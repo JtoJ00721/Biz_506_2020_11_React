@@ -18,7 +18,7 @@ router.get("/bbsList", (req, res) => {
     { id: 0, writer: "희", subject: "게시판" },
   ];
 
-  bbsDao.findAll({ order: ["b_date_time"] }).then((bbsList) => {
+  bbsDao.findAll({ order: ["b_date_time", "DESC"] }).then((bbsList) => {
     res.json(bbsList);
   });
   // res.json(list);
