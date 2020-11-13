@@ -5,7 +5,7 @@ class BBsItem extends Component {
     const { index, bbs } = this.props;
     return (
       <tr>
-        <td>{index}</td>
+        <td>{index + 1}</td>
         <td>{bbs.b_writer}</td>
         <td>{bbs.b_date_time}</td>
         <td>{bbs.b_subject}</td>
