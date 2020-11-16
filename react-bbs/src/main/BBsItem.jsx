@@ -1,15 +1,43 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
+import axios from "axios";
 
 class BBsItem extends Component {
+  handleClick = (id) => {
+    const { fetchBBs } = this.props;
+    if (window.confirm("정말 삭제? ><")) {
+      alert("id : " + id + " 데이터를 폭★8 시킵니다");
+      axios
+        .delete(`http://localhost:5000/api/delete/${id}`)
+        .then((result) => {
+          console.log(result);
+          fetchBBs();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   render() {
-    const { index, bbs } = this.props;
+    const { index, bbs, handleUpdate } = this.props;
     return (
       <tr>
         <td>{index + 1}</td>
         <td>{bbs.b_writer}</td>
-        <td>{bbs.b_date_time}</td>
-        <td>{bbs.b_subject}</td>
-        <td>&times;</td>
+        <td>
+          <Moment format="YYYY-MM-DD HH:mm:ss">{bbs.b_date_time}</Moment>
+        </td>
+        <td
+          onClick={() => this.handleUpdate(bbs.b_id)}
+          style={{ cursor: "pointer" }}
+        >
+          {bbs.b_subject}
+        </td>
+        <td
+          onClick={() => this.handleClick(bbs.b_id)}
+          style={{ cursor: "pointer" }}
+        >
+          &times;
+        </td>
       </tr>
     );
   }

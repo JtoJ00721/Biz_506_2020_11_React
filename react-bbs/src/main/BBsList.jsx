@@ -4,9 +4,15 @@ import BBsItem from "./BBsItem";
 
 class BBsList extends Component {
   render() {
-    const { bbsList } = this.props;
+    const { bbsList, fetchBBs, handleUpdate } = this.props;
     const bbsItemList = bbsList.map((bbs, index) => (
-      <BBsItem index={index} bbs={bbs} />
+      <BBsItem
+        key={bbs.id}
+        index={index}
+        bbs={bbs}
+        fetchBBs={fetchBBs}
+        handleUpdate={handleUpdate}
+      />
     ));
     return (
       <div id="tablediv">

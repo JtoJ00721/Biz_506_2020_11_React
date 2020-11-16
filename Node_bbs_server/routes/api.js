@@ -94,7 +94,7 @@ router.post("/update/:id", (req, res) => {
     });
 });
 
-router.get("/delete/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const b_id = req.params.id;
   bbsDao
     .destroy({
