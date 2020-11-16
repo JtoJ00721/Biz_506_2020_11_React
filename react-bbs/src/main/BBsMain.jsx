@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import BBsInsert from "./BBsInsert";
 import BBsList from "./BBsList";
 
+const BBS_INSERT_URL = "http://localhost:5000/api/insert";
+const BBS_FETCH_URL = "http://localhost:5000/api/bbsList";
+
 class BBsMain extends Component {
   state = {
     state1: "",
@@ -27,7 +30,7 @@ class BBsMain extends Component {
     const { bbsList, state1, state2 } = this.state;
     return (
       <div>
-        <BBsInsert />
+        <BBsInsert insertURL={BBS_INSERT_URL} />
         <BBsList bbsList={bbsList} state1={state1} state2={state2} />
       </div>
     );

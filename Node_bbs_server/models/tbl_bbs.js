@@ -2,7 +2,11 @@ const tbl_bbs = (sequelize, DataTypes) =>
   sequelize.define(
     "tbl_bbs",
     {
-      b_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+      b_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       b_date_time: { type: DataTypes.STRING(1300), allowNull: false },
       b_writer: { type: DataTypes.STRING(1300), allowNull: false },
       b_subject: { type: DataTypes.STRING(1300), allowNull: false },
