@@ -1,0 +1,42 @@
+#tablediv {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+#tablediv section {
+  display: inline-block;
+  width: 80%;
+}
+
+#tablediv section table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tablediv section table caption {
+  font-size: 30px;
+  font-weight: bolder;
+  color: chocolate;
+}
+
+#tablediv section table thead tr {
+  background-color: cornflowerblue;
+  border: 3px dashed wheat;
+  border-bottom: 1px solid gray;
+}
+
+#tablediv section table tbody tr {
+  transition: all 0.7s;
+}
+
+#tablediv section table tbody tr:nth-child(even) {
+  background-color: aliceblue;
+}
+
+#tablediv section table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#tablediv section table tbody td {
+  border: 1px solid gray;
+}
