@@ -1,0 +1,72 @@
+.section_allui {
+  display: inline-block;
+  width: 98%;
+}
+
+.input_block {
+  text-align: left;
+}
+
+.input_block input {
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid#ccc;
+  border-radius: 7px;
+}
+
+.input_block input:first-child {
+  margin-left: 0px;
+}
+
+.input_block button {
+  padding: 8px;
+  color: wheat;
+  background-color: gray;
+  font-weight: bold;
+  transition: all 0.7s;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+}
+
+.input_block button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+.table_block {
+  text-align: center;
+}
+
+.table_holder {
+  display: inline-block;
+  width: 100%;
+}
+
+.table_holder table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table_holder table tr {
+  border-top: 2px solid #ccc;
+}
+
+.table_holder table thead tr:first-child {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+.table_holder table tbody tr {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.table_holder table tbody tr:last-child {
+  border-bottom: 2px solid #ccc;
+}
+
+.table_holder table th,
+.table_holder table td {
+  padding: 3px 0px;
+}
