@@ -1,0 +1,25 @@
+nav.main-nav {
+  margin: 0px;
+  background-color: coral;
+}
+nav.main-nav ul {
+  display: flex;
+}
+
+nav.main-nav li {
+  display: inline-block;
+  padding: 10px 12px;
+  margin: 3px;
+}
+
+nav.main-nav .nav-link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.7s;
+  padding: 13px 15px;
+}
+
+nav.main-nav .nav-link:hover {
+  color: cornflowerblue;
+  background-color: crimson;
+}

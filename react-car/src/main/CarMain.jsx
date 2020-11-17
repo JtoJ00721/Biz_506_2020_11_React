@@ -19,6 +19,15 @@ class CarMain extends Component {
         c_where: "달",
       },
     ],
+    traval: {
+      c_id: (++this.id).toString(),
+      c_dist: "",
+      c_start_time: "",
+      c_end_time: "",
+      c_how_far: 0,
+      c_cost: 0,
+      c_where: "",
+    },
   };
 
   componentDidUpdate(perProps, perState) {
@@ -38,18 +47,8 @@ class CarMain extends Component {
     }
   }
 
-  carInsert = (dist, how_far, cost, where) => {
-    const traval = {
-      c_id: (++this.id).toString(),
-      c_dist: dist,
-      c_start_time: "날짜",
-      c_end_time: "끝! ><",
-      c_how_far: how_far,
-      c_cost: cost,
-      c_where: where,
-    };
-
-    this.setState({ carList: [...this.state.carList, traval] });
+  carInsert = () => {
+    this.setState({ carList: [...this.state.carList, this.state.traval] });
   };
 
   render() {
