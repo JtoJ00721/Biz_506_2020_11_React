@@ -17,12 +17,8 @@ function App() {
         <h3>REACT BBS 2020</h3>
         <p>React로 구현하는 BBS Project</p>
       </header>
-      <Router>
-        <BBsNav />
-        <Route exact path="/" component={BBsMain} />
-        <Route exact path="/admin" component={BBsMain} />
-        <BBsMain />
-      </Router>
+      <BBsNav />
+      <BBsMain />
       <footer className="footer">
         <address>CopyRight</address>
       </footer>

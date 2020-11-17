@@ -25,6 +25,10 @@
   border-bottom: 1px solid gray;
 }
 
+#tablediv section table thead th {
+  padding: 7px 0px;
+}
+
 #tablediv section table tbody tr {
   transition: all 0.7s;
 }
@@ -39,4 +43,6 @@
 
 #tablediv section table tbody td {
   border: 1px solid gray;
+  font-size: 17px;
+  padding: 7px 0px;
 }

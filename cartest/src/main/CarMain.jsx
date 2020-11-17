@@ -10,12 +10,12 @@ class CarMain extends Component {
   state = {
     carList: [
       {
-        c_id: 0,
+        c_id: "0",
         c_dist: "토끼 포획",
         c_start_time: "2020-11-17",
         c_end_time: "2020-11-18",
-        c_how_far: 355000,
-        c_cost: 2000000000,
+        c_how_far: "355000",
+        c_cost: "2000000000",
         c_where: "달",
       },
     ],
@@ -38,21 +38,16 @@ class CarMain extends Component {
     }
   }
 
-  carInsert = (dist, how_far, now_far, cost, where) => {
-    const dateTime = Moment().format("YYYY-MM-DD HH:mm:ss");
+  carInsert = (dist, how_far, cost, where) => {
     const traval = {
-      c_id: ++this.id,
+      c_id: (++this.id).toString(),
       c_dist: dist,
-      c_start_time: dateTime.toString(),
-      c_end_time: "",
+      c_start_time: "날짜",
+      c_end_time: "끝! ><",
       c_how_far: how_far,
       c_cost: cost,
       c_where: where,
     };
-
-    this.setState({
-      carLIst: this.set.carList.concat({ ...traval }),
-    });
 
     this.setState({ carList: [...this.state.carList, traval] });
   };
@@ -60,7 +55,7 @@ class CarMain extends Component {
   render() {
     return (
       <section className="section_allui">
-        <CarInsert />
+        <CarInsert carInsert={this.carInsert} />
         <CarList />
       </section>
     );

@@ -77,11 +77,11 @@ class BucketMain extends Component {
   }
 
   bucketInsert = (bucket_title) => {
-    const date = new Date();
+    const dateTime = new Date();
     const bucket = {
       b_id: ++this.id,
       b_flag: 9,
-      b_start_date: date.toString(),
+      b_start_date: dateTime.toString(),
       b_title: bucket_title,
       b_end_date: "",
       b_end_check: false,
