@@ -1,0 +1,13 @@
+extends layout
+
+block contents
+    script(src="/javascripts/tree.js")
+    section.tree-list
+        table.tree.tree-list
+            thead
+                tr
+                    th 길 이름
+            tbody
+                each tree, index in tree_list
+                    tr
+                        td=tree.sttreeStretNm
